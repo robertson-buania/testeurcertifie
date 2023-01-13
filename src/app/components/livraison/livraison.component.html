@@ -1,0 +1,205 @@
+<div class="row">
+    <div class="col-md-12 mt-4">
+        <div class="card h-100 mb-4">
+          <div class="card-header pb-0 p-3">
+            <div class="row" >
+
+              <div class="col-md-6 d-flex align-items-center" >
+                <h6 class="mb-0">Toutes les Livraisons </h6>
+              </div>
+              <div *ngIf="new" class="col-md-6 text-right" >
+                <button (click)="newLivraison()"class="btn btn-outline-primary btn-sm mb-0">Nouvelle Livraison</button>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="card-header pb-0 px-3">
+            <div class="row">
+              <div class="col-md-6">
+                <h6 class="mb-0">Your Transaction's</h6>
+              </div>
+              <div class="col-md-6 d-flex justify-content-end align-items-center">
+                <i class="far fa-calendar-alt me-2"></i>
+                <small>23 - 30 March 2020</small>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <div class="card-body pt-3  ">
+                <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Mois encours</h6>
+                <ul class="list-group">
+
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-0 border-radius-lg">
+                    <div class="d-flex align-items-center">
+                      <button class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-0 text-dark text-xxl">Poids tare</h6>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-centertext-gradient
+                    text-xxl font-weight-bold">
+                    <strong class="btn btn-secondary " style="font-size: 1.5rem !important;">
+                      {{poidstare}} T
+                    </strong>
+                    </div>
+                  </li>
+
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-0 border-radius-lg">
+                    <div class="d-flex align-items-center">
+                      <button class="btn btn-icon-only btn-rounded btn-outline-info mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-0 text-dark text-xxl">Poids net</h6>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center text-success
+                     text-xxl font-weight-bold">
+                     <strong class="btn btn-info " style="font-size: 1.5rem !important;">
+                      {{poidsnet}} T
+                    </strong>
+                    </div>
+                  </li>
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-0 border-radius-lg">
+                    <div class="d-flex align-items-center">
+                      <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-0 text-dark text-xxl">Poids brute</h6>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center
+                     font-weight-bold" >
+                     <strong class="btn btn-success " style="font-size: 1.5rem !important;">
+                      {{poidsbrute}} T
+                    </strong>
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="card-body pt-3  ">
+                <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Mois Précedent</h6>
+                <ul class="list-group">
+
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-0 border-radius-lg">
+                    <div class="d-flex align-items-center">
+                      <button class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-0 text-dark text-xxl">Poids tare</h6>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-centertext-gradient
+                    text-xxl font-weight-bold">
+                    <strong class="btn btn-secondary " style="font-size: 1.5rem !important;">
+                      {{poidstareP}} T
+                    </strong>
+                    </div>
+                  </li>
+
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-0 border-radius-lg">
+                    <div class="d-flex align-items-center">
+                      <button class="btn btn-icon-only btn-rounded btn-outline-info mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-0 text-dark text-xxl">Poids net</h6>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center text-success
+                     text-xxl font-weight-bold">
+                     <strong class="btn btn-info " style="font-size: 1.5rem !important;">
+                      {{poidsnetP}} T
+                    </strong>
+                    </div>
+                  </li>
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-0 border-radius-lg">
+                    <div class="d-flex align-items-center">
+                      <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-0 text-dark text-xxl">Poids brute</h6>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center
+                     font-weight-bold" >
+                     <strong class="btn btn-success " style="font-size: 1.5rem !important;">
+                      {{poidsbruteP}} T
+                    </strong>
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+        </div>
+      </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-header pb-0">
+          <h6>Toutes les livraisons</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2  ">
+          <div class="table-responsive p-0">
+            <table class="table align-items-center justify-content-center mb-0 table-hover ">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">N°</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Client</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Bon de livraison</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Poids tare</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Poids net</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Poids brute</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Lieu de vente</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody *ngIf="livraisons"  >
+                <tr *ngFor="let liv of livraisons;let i=index" >
+                  <td>
+                    <div class="d-flex px-2">
+
+                      <div class="my-auto">
+                        <h6 class="mb-0 text-xxl">{{i+1}}</h6>
+                      </div>
+                    </div>
+                  </td>
+                  <td  >
+                    <p *ngIf="liv.nomclient" class="text-xxl font-weight-bold mb-0">{{liv.nomclient}} </p>
+                  </td>
+                  <td>
+                    <p *ngIf="liv.bonlivraison" class="text-xxl font-weight-bold mb-0">{{liv.bonlivraison}} </p>
+                  </td>
+                  <td>
+                    <p *ngIf="liv.poidstare" class="text-xxl font-weight-bold mb-0">{{liv.poidstare}} T</p>
+                  </td>
+                  <td>
+                    <p *ngIf="liv.poidsnet" class="text-xxl font-weight-bold">{{liv.poidsnet}} T</p>
+                  </td>
+                  <td class="align-middle text-center">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <p *ngIf="liv.poidsbrute" class="me-2 text-xxl font-weight-bold">{{liv.poidsbrute}} T</p>
+
+                    </div>
+                  </td>
+
+                  <td>
+                    <p *ngIf="liv.lieuvente" class="text-xxl font-weight-bold">{{liv.lieuvente}} </p>
+                  </td>
+                  <td *ngIf="liv.id" >
+                    <a (click)="detailLivraison(liv.id)" class="text-xxl btn btn-outline-primary font-weight-bold">Details</a>
+                  </td>
+
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

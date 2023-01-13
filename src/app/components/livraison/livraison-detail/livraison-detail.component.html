@@ -1,0 +1,108 @@
+<div class="page-header align-items-start section-height-50 pt-5 pb-11 m-3 border-radius-lg"
+style="background-image: url('../../../../assets/im/curved14.jpg');">
+  <span class="mask bg-gradient-dark opacity-6"></span>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="d-flex ">
+        <a (click)="retour()" class="btn btn-outline-info"> Retour</a>
+      </div>
+      <div class="col-lg-4 text-center mx-auto">
+        <h1 class="text-white mb-2 mt-5">Détail de la livraison</h1>
+        <h3 class="text-white mb-2 mt-5">{{livraison?.datecreation}}</h3>
+
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card-body pt-4 p-1">
+      <h5 class=" text-white text-body text-xxl font-weight-bolder mb-3">
+       <span class="text-white">
+        Nom produit : <span class="btn btn-info">{{livraison?.produit}} </span>
+        lieu de vente <span class="btn btn-info"> {{livraison?.lieuvente}}</span>
+       </span>
+      </h5>
+      <ul class="list-group">
+
+        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+          <div class="d-flex align-items-center">
+            <button class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+            <div class="d-flex flex-column">
+              <h6 class="px-1 mb-1 text-dark text-xxl">Poids tare</h6>
+            </div>
+          </div>
+          <div class="d-flex align-items-centertext-gradient
+          text-xxl font-weight-bold">
+          <strong class="btn btn-secondary " style="font-size: 1.05rem !important;">
+            {{poidstare}} T
+          </strong>
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="d-flex flex-column">
+              <h6 class="mb-1 text-dark text-xxl">Poids net</h6>
+            </div>
+          </div>
+          <div class="d-flex align-items-centertext-gradient
+          text-xxl font-weight-bold">
+          <strong class="btn btn-info " style="font-size: 1.05rem !important;">
+            {{poidstare}} T
+          </strong>
+          </div>
+        </li>
+        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+          <div class="d-flex align-items-center">
+            <div class="d-flex flex-column">
+              <h6 class="px-1 mb-1 text-dark text-xxl">Poids brute</h6>
+            </div>
+          </div>
+          <div class="d-flex align-items-center
+           font-weight-bold" >
+           <strong class="btn btn-success " style="font-size: 1.05rem !important;">
+            {{poidsbrute}} T
+          </strong>
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="d-flex flex-column">
+              <h6 class="mb-1 text-dark text-xxl">Bon Livraison</h6>
+            </div>
+          </div>
+          <div class="d-flex align-items-center
+           font-weight-bold" >
+           <strong class="btn btn-danger " style="font-size: 1.05rem !important;">
+            {{livraison?.bonlivraison}}
+          </strong>
+          </div>
+        </li>
+        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+          <div class="d-flex align-items-center">
+            <div class="d-flex flex-column">
+              <h6 class="mb-1 text-dark text-xxl px-1">Nom client</h6>
+              <p class="mb-1 text-dark text-xxl px-1">{{livraison?.telclient}}</p>
+              <p class="mb-1 text-dark text-xxl px-1">{{livraison?.destination}}</p>
+            </div>
+          </div>
+          <div class="d-flex flex-column-column align-items-center
+           font-weight-bold" >
+           <strong class="btn btn-success " style="font-size: 1.05rem !important;">
+            {{livraison?.nomclient}}
+          </strong>
+
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="d-flex flex-column">
+              <h6 class="mb-1 text-dark text-xxl">Plaque</h6>
+            </div>
+          </div>
+          <div class="d-flex align-items-center
+           font-weight-bold" >
+           <strong class="btn btn-danger " style="font-size: 1.05rem !important;">
+            {{livraison?.plaque}}
+          </strong>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+

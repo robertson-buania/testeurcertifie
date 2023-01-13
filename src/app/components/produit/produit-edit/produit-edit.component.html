@@ -1,0 +1,70 @@
+<div class="page-header align-items-start section-height-50 pt-5 pb-11 m-3 border-radius-lg"
+style="background-image: url('../../../../assets/im/curved14.jpg');">
+  <span class="mask bg-gradient-dark opacity-6"></span>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="d-flex justify-content-start">
+        <a (click)="retour()" class="btn btn-warning nav-link text-box">Retour</a>
+      </div>
+      <div class="col-lg-5 text-center mx-auto">
+        <h1 class="text-white  mt-2">Modification du  produit</h1>
+        <p class="text-lead text-white">Insérer un nouveau produit</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row mt-lg-n10 mt-md-n11 mt-n10">
+
+    <div class="col-xl-8 col-lg-8 col-md-8 mx-auto">
+      <div class="card z-index-0">
+
+        <div *ngIf="productFormGroup"  class="card-body">
+          <form [formGroup]="productFormGroup"  role="form text-left">
+            <div class="mb-3">
+              <label style="font-size:large" for="nom">Nom ou code du produit</label>
+
+              <input style="font-size:large"  formControlName="nom" type="text" class="form-control"
+              placeholder="nom ou code du produit" aria-label="nom du produit" aria-describedby="email-addon"
+               [ngClass]="{'is-invalid':submitted && productFormGroup.controls['nom'].errors}" >
+              <div *ngIf="submitted && productFormGroup.controls['nom'].errors " class="invalid-feedback">
+                <p class="alert" *ngIf="productFormGroup.controls['nom'].errors['required']" >
+                  Le nom est requis
+                </p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label style="font-size:large" for="prix">Prix</label>
+              <input style="font-size:large" type="number" min="0"   formControlName="prix" class="form-control" step="any"
+              [ngClass]="{'is-invalid':submitted && productFormGroup.controls['prix'].errors}" >
+              <div *ngIf="submitted && productFormGroup.controls['prix'].errors" class="invalid-feedback">
+                <p class="alert" *ngIf="productFormGroup.controls['prix'].errors['required']" >
+                  Le prix de vente est requis
+                </p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label style="font-size:large" for="description">Description</label>
+              <textarea class="form-control"  formControlName="description" class="form-control"
+              [ngClass]="{'is-invalid':submitted && productFormGroup.controls['description'].errors}"
+               cols="10" rows="5"></textarea>
+
+              <div *ngIf="submitted && productFormGroup.controls['description'].errors" class="invalid-feedback">
+                <p class="alert" *ngIf="productFormGroup.controls['description'].errors['required']" >
+                  La description est nécessaire
+                </p>
+              </div>
+             </div>
+            <div class="text-center">
+              <div *ngIf="!buttonActive" class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+               </div>
+                <button [disabled]="!buttonActive" (click)="onUpdateProduct()"  type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">Valider</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

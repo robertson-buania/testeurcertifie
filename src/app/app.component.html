@@ -1,0 +1,121 @@
+
+
+<app-connexion *ngIf="connexionp" ></app-connexion>
+
+
+
+<div  *ngIf="!connexionp" >
+
+  <div *ngIf="!printer" class="row">
+    <div class="col-2">
+      <div style="border-radius: 15px;" class="container-fluid float-start mt-2 position-sticky mb-1 ">
+        <div class="row">
+            <div class="col-sm-auto  float-start sticky-top">
+                <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+                    <a  class="d-block btn  p-2 link-dark text-decoration-none" title=""
+                    data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+                       <img style="border-radius: 15px;" width="170"
+                       src="../assets/im/IMG_20230107_210734.jpg" alt="" srcset="">
+                    </a>
+
+                     <ul class="navbar-nav  ">
+                        <li (click)="actived('synthese')" [ngClass]=" {'over':synthese} "class="lien bg-white my-2 mt-4 d-flex align-items-center ">
+                            <a routerLink="synthese"class="nav-link  px-2" title=""
+                            data-bs-toggle="tooltip" data-bs-placement="right"
+                             data-bs-original-title="Home">
+                             <i class="bi bi-cart-check fs-4"></i>
+                             <span class="nav-link-text ms-1">Synthèse</span>
+                            </a>
+
+                        </li>
+                        <li (click)="actived('livraison')" [ngClass]=" {'over':livraison} "class="lien bg-white my-2 mt-4 d-flex align-items-center ">
+                          <a routerLink="livraisons"class="nav-link py-1 px-2" title=""
+                          data-bs-toggle="tooltip" data-bs-placement="right"
+                           data-bs-original-title="Home">
+                           <i class="bi bi-cart-check fs-4"></i>
+                           <span class="nav-link-text ms-1">Livraisons</span>
+                          </a>
+
+                      </li>
+                        <li (click)="actived('produit')" [ngClass]=" {'over':produit} "   class="lien bg-white my-2 nav-item d-flex align-items-center">
+                            <a routerLink="produits"class="nav-link nav-link py-1 px-2 me-2 active"
+                             title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                                <i class="bi bi-database-check fs-4"></i> Produits
+                            </a>
+                        </li>
+                        <li (click)="actived('consommation')" [ngClass]=" {'over':consommation} " class="lien nav-item bg-white my-2">
+                            <a routerLink="consommations"class="nav-link py-1 px-2" title=""
+                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                            <i class="bi bi-droplet-half fs-4"></i> Consommation
+
+                            </a>
+                        </li>
+                        <li (click)="actived('enin')" [ngClass]=" {'over':enin} " class="lien nav-item bg-white my-2" >
+                            <a routerLink="engins"class="nav-link py-1 px-2"
+                            title="" data-bs-toggle="tooltip"
+                            data-bs-placement="right" data-bs-original-title="Products">
+                                <i class="bi bi-battery-charging fs-3"></i> Etat des engins
+
+                            </a>
+                        </li>
+
+                        <li (click)="actived('depense')" [ngClass]=" {'over':depense} " class="lien nav-item bg-white my-2" >
+                          <a routerLink="depenses"class="nav-link py-1 px-2"
+                          title="" data-bs-toggle="tooltip"
+                          data-bs-placement="right" data-bs-original-title="Products">
+                              <i class="bi bi-battery-charging fs-3"></i> Depense
+
+                          </a>
+                      </li>
+                      <li class="dropdown">
+                        <button (click)="deconnexion()" class="btn btn-secondary dropdown-toggle"
+                         type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         Dec {{user.username}}
+                        </button>
+
+                      </li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="g-sidenav-show bg-gray-100 ">
+        <div class="container position-fixed  z-index-sticky top-0 bg-gray-100 text-white">
+          <div class="row">
+            <div  class="col-12" style="display: flex !important;align-items: center !important; justify-content: center !important;">
+
+              <nav style="display: flex !important;align-items: center !important; justify-content: center !important;" class="navbar navbar-expand-lg  blur blur-rounded top-0  z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+                <div style="display: flex !important;align-items: center !important; justify-content: center !important;" class="container-fluid">
+                  <a style="display: flex !important;align-items: center !important; justify-content:
+                  center !important;" class="navbar-brand btn font-weight-bolder ms-lg-0 ms-3 " >
+                    <img height="50"  src="../assets/im/IMG_20230107_210734.jpg" alt="" srcset="">
+                  </a>
+
+                </div>
+              </nav>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5 pt-5">
+        <div class="pt-5" style="background-image: url('./../assets/im/6073af0f620b5ebd8f91a171f69fd852d6a88e94.jpeg');" >
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="printer" class="d-flex justify-content-center align-items-center">
+    <app-printer [dateCreation]="dateCreation" ></app-printer>
+
+  </div>
+</div>
+

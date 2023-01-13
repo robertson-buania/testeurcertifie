@@ -1,0 +1,37 @@
+.size-1
+{
+  font-size: 1.1rem !important;
+}
+
+.size-2{
+  font-size: 1.2rem !important;
+}
+
+.size-3
+{
+  font-size: 1.3rem !important;
+}
+
+.size-4{
+  font-size: 1.4rem !important;
+}
+
+.size-5{
+  font-size: 1.5rem !important;
+}
+
+.size-10{
+  font-size: 2rem !important;
+}
+.over,.lien:hover
+{
+  background: transparent !important;
+}
+.lien{
+  border-radius: 0 15px 0 15px;
+  width: 100%;
+}
+.ul-lien{
+  width: 300px;
+}
+

@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12 mt-4">
+            <div class="card">
+                <div *ngIf="new" class="d-flex justify-content-end align-items-end">
+                    <a (click)="newProduct()" class="nav-link btn ">Nouveau produit</a>
+                </div>
+              <div class="card-header pb-0 px-3">
+                <h6 style="font-size:large" class="mb-0">Liste de produits</h6>
+              </div>
+              <div class="card-body pt-4 p-3" *ngIf="produits" >
+                <ul class="list-group" >
+                  <li *ngFor="let p of produits"  class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                    <div class="d-flex flex-column">
+                      <h6 style="font-size:large" class="mb-3 text-sm">{{p.nom}}</h6>
+                      <span style="font-size:large" class="mb-2 text-xs">prix:<span class="text-dark font-weight-bold ms-2">${{p.prix}} </span></span>
+                      <p style="font-size:large"class="mb-2 text-xs">{{p.description}} </p>
+                    </div>
+                    <div class="ms-auto" *ngIf="p.id">
+                      <a class="btn btn-link text-dark px-3 mb-0" (click)="editProduct(p.id)">
+                        <i style="font-size:large" class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

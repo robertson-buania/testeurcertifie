@@ -1,0 +1,167 @@
+<div class="row bg-gradient-dark ">
+
+  <div class="card h-100 ">
+    <div class="card-header pb-0 p-3">
+      <div class="row bg-gray-100">
+        <div class="d-flex justify-content-start">
+          <a (click)="retour()" class="btn btn-warning nav-link text-box">Retour</a>
+        </div>
+        <div class="col-md-12" >
+          <div class="container" *ngIf="livraisonFormGroup" >
+            <form [formGroup]="livraisonFormGroup"  role="form text-left">
+              <div class="mb-3" *ngIf="produits" >
+                <label for="produit">Produits</label>
+                <select class="form-control" formControlName="produit" >
+                  <option *ngFor="let produit of produits" [value]="produit.nom">{{produit.nom}} </option>
+                </select>
+
+                <div *ngIf="submitted && livraisonFormGroup.controls['produit'].errors " class="invalid-feedback">
+                      <p class="alert" *ngIf="livraisonFormGroup.controls['produit'].errors['required']" >
+                        Le produit est requis
+                      </p>
+                    </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="nomclient">Nom client</label>
+
+                    <input  formControlName="nomclient" type="text" class="form-control"
+                    placeholder="nomclient ou code du produit" aria-label="nomclient du produit" aria-describedby="email-addon"
+                    [ngClass]="{'is-invalid':submitted && livraisonFormGroup.controls['nomclient'].errors}" >
+                    <div *ngIf="submitted && livraisonFormGroup.controls['nomclient'].errors " class="invalid-feedback">
+                      <p class="alert" *ngIf="livraisonFormGroup.controls['nomclient'].errors['required']" >
+                        Le nom du client est requise
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="date du début">Tél</label>
+
+                    <input  formControlName="telclient" type="tel" class="form-control"
+                    placeholder="+243" aria-label="date du début du produit" aria-describedby="email-addon"
+                    [ngClass]="{'is-invalid':submitted && livraisonFormGroup.controls['telclient'].errors}" >
+                    <div *ngIf="submitted && livraisonFormGroup.controls['telclient'].errors " class="invalid-feedback">
+                      <p class="alert" *ngIf="livraisonFormGroup.controls['telclient'].errors['required']" >
+                        L'date du début est requise
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="plaque">Plaque</label>
+
+                    <input  formControlName="plaque" type="text" class="form-control"
+                    placeholder="plaque " aria-label="plaque du produit" aria-describedby="email-addon"
+                    [ngClass]="{'is-invalid':submitted && livraisonFormGroup.controls['plaque'].errors}" >
+                    <div *ngIf="submitted && livraisonFormGroup.controls['plaque'].errors " class="invalid-feedback">
+                      <p class="alert" *ngIf="livraisonFormGroup.controls['plaque'].errors['required']" >
+                        La plaque est requise
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="text-xxl" for="poidsbrute"> Poids brute</label>
+
+                    <input (mouseleave)="calculPodsNet()" (click)="calculPodsNet()"  formControlName="poidsbrute" min="0" type="number" step="any" class="form-control"
+                    placeholder="poids brute" aria-label="poidsbrute du produit" aria-describedby="email-addon"
+                    [ngClass]="{'is-invalid':submitted && livraisonFormGroup.controls['poidsbrute'].errors}" >
+                    <div *ngIf="submitted && livraisonFormGroup.controls['poidsbrute'].errors " class="invalid-feedback">
+                      <p class="alert" *ngIf="livraisonFormGroup.controls['poidsbrute'].errors['required']" >
+                        L'poids brute est requise
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="poidstare">Poids tare</label>
+
+                    <input  (mouseleave)="calculPodsNet()" (click)="calculPodsNet()"  formControlName="poidstare" min="0" type="number" step="any" class="form-control"
+                    placeholder="poids tare" aria-label="poidstare du produit" aria-describedby="email-addon"
+                    [ngClass]="{'is-invalid':submitted && livraisonFormGroup.controls['poidstare'].errors}" >
+                    <div *ngIf="submitted && livraisonFormGroup.controls['poidstare'].errors " class="invalid-feedback">
+                      <p class="alert" *ngIf="livraisonFormGroup.controls['poidstare'].errors['required']" >
+                        L'poids tare est requise
+                      </p>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <label class="text-xxl" for="poidsnet">Poids net</label>
+
+                    <input [(ngModel)]="poidsnet"   (mouseleave)="calculPodsNet()"
+                     (click)="calculPodsNet()"   formControlName="poidsnet" min="0" type="number" step="any" class="form-control"
+                    placeholder="poids net" aria-label="poidsnet du produit" aria-describedby="email-addon"
+                    [ngClass]="{'is-invalid':submitted && livraisonFormGroup.controls['poidsnet'].errors}" >
+                    <div *ngIf="submitted && livraisonFormGroup.controls['poidsnet'].errors " class="invalid-feedback">
+                      <p class="alert" *ngIf="livraisonFormGroup.controls['poidsnet'].errors['required']" >
+                        Le poids net est requise
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="destination">Destination</label>
+
+                    <input  formControlName="destination" type="text" class="form-control"
+                    placeholder="destination " aria-label="destination" aria-describedby="email-addon"
+                    [ngClass]="{'is-invalid':submitted && livraisonFormGroup.controls['destination'].errors}" >
+                    <div *ngIf="submitted && livraisonFormGroup.controls['destination'].errors " class="invalid-feedback">
+                      <p class="alert" *ngIf="livraisonFormGroup.controls['destination'].errors['required']" >
+                        La destination est requise
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="date du début">Bon de livraison</label>
+
+                    <input  formControlName="bonlivraison" type="text" class="form-control"
+                    placeholder="" aria-label="date du début du produit" aria-describedby="email-addon"
+                    [ngClass]="{'is-invalid':submitted && livraisonFormGroup.controls['bonlivraison'].errors}" >
+                    <div *ngIf="submitted && livraisonFormGroup.controls['bonlivraison'].errors " class="invalid-feedback">
+                      <p class="alert" *ngIf="livraisonFormGroup.controls['bonlivraison'].errors['required']" >
+                        Le bon livraison est requis
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="lieuvente">Lieu vente</label>
+
+                    <select class="form-control" formControlName="lieuvente" [ngClass]="{'is-invalid':submitted && livraisonFormGroup.controls['bonlivraison'].errors}">
+                      <option value="interne"> Interne</option>
+                      <option value="externe"> Externe</option>
+                    </select>
+                    <div *ngIf="submitted && livraisonFormGroup.controls['lieuvente'].errors " class="invalid-feedback">
+                      <p class="alert" *ngIf="livraisonFormGroup.controls['lieuvente'].errors['required']" >
+                        La lieu vente est requis
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="text-center">
+                <div *ngIf="!buttonActive" class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                 </div>
+                <button [disabled]="!buttonActive" (click)="onSaveLivraison()"  type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">Valider</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

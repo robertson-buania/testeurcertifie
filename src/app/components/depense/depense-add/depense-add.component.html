@@ -1,0 +1,73 @@
+<div class="page-header align-items-start section-height-50 pt-5 pb-11 m-3 border-radius-lg"
+style="background-image: url('../../../../assets/im/curved14.jpg');">
+  <span class="mask bg-gradient-dark opacity-6"></span>
+  <div class="container">
+    <div class="d-flex justify-content-start">
+      <a (click)="retour()" class="btn btn-warning nav-link text-box">Retour</a>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-5 text-center mx-auto">
+        <h1 class="text-white mb-2 mt-5">Nouveau produit</h1>
+        <p class="text-lead text-white"></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row mt-lg-n10 mt-md-n11 mt-n10">
+    <div class="col-xl-8 col-lg-8 col-md-8 mx-auto">
+      <div class="card z-index-0">
+
+        <div *ngIf="depenseFormGroup"  class="card-body">
+          <form [formGroup]="depenseFormGroup"  role="form text-left">
+            <div class="mb-3">
+              <label for="montant">Montant en $</label>
+
+              <input  formControlName="montant" min="0" type="number" step="any" class="form-control"
+              placeholder="montant ou code du produit" aria-label="montant du produit" aria-describedby="email-addon"
+               [ngClass]="{'is-invalid':submitted && depenseFormGroup.controls['montant'].errors}" >
+              <div *ngIf="submitted && depenseFormGroup.controls['montant'].errors " class="invalid-feedback">
+                <p class="alert" *ngIf="depenseFormGroup.controls['montant'].errors['required']" >
+                  Le montant est requis
+                </p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="motif">Motif de la dépense</label>
+              <input type="text"   formControlName="motif" class="form-control" step="any"
+              [ngClass]="{'is-invalid':submitted && depenseFormGroup.controls['motif'].errors}" >
+              <div *ngIf="submitted && depenseFormGroup.controls['motif'].errors" class="invalid-feedback">
+                <p class="alert" *ngIf="depenseFormGroup.controls['motif'].errors['required']" >
+                  Le motif de vente est requis
+                </p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="observation">Observation</label>
+              <textarea class="form-control"  formControlName="observation" class="form-control"
+              [ngClass]="{'is-invalid':submitted && depenseFormGroup.controls['observation'].errors}" cols="20" rows="10"></textarea>
+
+              <div *ngIf="submitted && depenseFormGroup.controls['observation'].errors" class="invalid-feedback">
+                <p class="alert" *ngIf="depenseFormGroup.controls['observation'].errors['required']" >
+                  L'observation est nécessaire
+                </p>
+              </div>
+             </div>
+
+
+            <div class="text-center">
+              <div *ngIf="!buttonActive" class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+               </div>
+              <button [disabled]="!buttonActive" (click)="onSavedepense()"  type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">Valider</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

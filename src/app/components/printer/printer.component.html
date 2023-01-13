@@ -1,0 +1,217 @@
+<div class="container mx-5 px-5">
+  <div class="mx-5 px-5 d-flex justify-content-center align-items-center ">
+    <img width="150" src="../../../assets/im/WhatsApp Image 2023-01-03 at 8.09.11 AM.jpeg" alt="">
+  </div>
+  <div class="d-flex justify-content-end ">
+    <button (click)="onQuitter()" class=" btn btn-danger">Quitter</button>
+  </div>
+  <div class="mx-5 px-5 d-flex justify-content-start align-items-center ">
+
+    <button (click)="onPrinter()" class=" btn btn-info">Imprimer</button>
+
+    <h5 class="text-uppercase" > Synthèse du jour <span class="px-2" >01-01-2025</span> </h5>
+
+  </div>
+  <div class="mx-5 px-5">
+    <div  class="card">
+      <div class="livraison" style="border-radius: 10px 0 10px 0;border: 0.05px solid rgb(71, 71, 71);">
+        <div class="">
+          <h6>Livraison</h6>
+        </div>
+        <div  class="">
+          <hr >
+          <div class="table-responsive p-0">
+            <table class="table align-items-center justify-content-center mb-0 table-hover ">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-dark  text-xxs font-weight-bolder ">Client</th>
+                  <th class="text-uppercase text-dark  text-xxs font-weight-bolder  ps-2">Télephone</th>
+                  <th class="text-uppercase text-dark  text-xxs font-weight-bolder  ps-2">Plaque</th>
+                  <th class="text-uppercase text-dark  text-xxs font-weight-bolder  ps-2">Destination</th>
+                  <th class="text-uppercase text-dark  text-xxs font-weight-bolder  ps-2">Bon de livraison</th>
+                  <th class="text-uppercase text-dark  text-xxs font-weight-bolder  ps-2">Poids tare</th>
+                  <th class="text-uppercase text-dark  text-xxs font-weight-bolder  ps-2">Poids net</th>
+                  <th class="text-uppercase text-dark  text-xxs font-weight-bolder text-center  ps-2">Poids brute</th>
+
+                  <th class="text-uppercase text-dark  text-xxs font-weight-bolder  ps-2">Produit</th>
+                  <th class="text-uppercase text-dark  text-xxs font-weight-bolder  ps-2">Prix Net</th>
+                  <th class="text-uppercase text-dark  text-xxs font-weight-bolder  ps-2">Prix Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody *ngIf="livraisons"  >
+                <tr *ngFor="let liv of livraisons;let i=index" >
+
+                  <td   >
+                    <p  class=" font-weight-bold mb-0 text-warning">{{liv.nomclient}} </p>
+                  </td>
+
+                  <td>
+                    <p  class=" font-weight-bold mb-0">{{liv.telclient}}</p>
+                  </td>
+                  <td>
+                    <p  class=" font-weight-bold mb-0">{{liv.plaque}} </p>
+                  </td>
+                  <td>
+                    <p class=" font-weight-bold">{{liv.destination}} </p>
+                  </td>
+                  <td class="align-middle text-center">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <p  class="me-2  font-weight-bold">{{liv.bonlivraison}} </p>
+
+                    </div>
+                  </td>
+                  <td class="align-middle text-center">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <p  class="me-2  font-weight-bold">{{liv.poidstare}} T</p>
+
+                    </div>
+                  </td>
+                  <td class="align-middle text-center">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <p  class="me-2  font-weight-bold text-primary">{{liv.poidsbrute-liv.poidstare}} T</p>
+
+                    </div>
+                  </td>
+                  <td class="align-middle text-center">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <p  class="me-2  font-weight-bold">{{liv.poidsbrute}} T</p>
+
+                    </div>
+                  </td>
+
+                  <td>
+                    <p class=" font-weight-bold">{{liv.produit}} </p>
+                  </td>
+
+                  <td>
+                    <p class=" font-weight-bold">{{produits[i].prix}} $ </p>
+                  </td>
+
+                  <td>
+                    <p class=" font-weight-bold text-success">{{(liv.poidsbrute-liv.poidstare)*produits[i].prix}}$ </p>
+                  </td>
+
+
+                </tr>
+
+              </tbody>
+
+            </table>
+            <div class="d-flex justify-content-center align-items-center mt-2">
+              <h6 class="mx-2" > Total vendu : <span class="text-capitalize  text-success " >{{totalvendu}} $</span>  </h6>
+              <h6 class="mx-2"> Poids Total : <span class="text-capitalize  text-primary " >{{totalpoids}} T</span>  </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row mt-2" style="border-radius: 10px 0 10px 0;border: 0.05px solid rgb(71, 71, 71);">
+        <div class="col-md-6 col-sm-12">
+          <div class="consommation" >
+            <div class="">
+              <h6>Consommation du mazout</h6>
+            </div>
+            <div  class="">
+              <hr >
+              <div class="table-responsive p-0">
+                <table class="table align-items-center justify-content-center mb-0 table-hover ">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder ">Nom de l'engin</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder  ps-2">Heure de chargement</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder  ps-2">Nombre de litre</th>
+
+                      <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center  ps-2">Réserve</th>
+     -->
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="consommations"  >
+                    <tr *ngFor="let cons of consommations" >
+
+                      <td class="align-middle text-center">
+                        <div class="d-flex align-items-center justify-content-center">
+                          <p class="me-2  font-weight-bold">{{cons.engin}} </p>
+
+                        </div>
+                      </td>
+                      <td class="align-middle text-center">
+                        <div class="d-flex align-items-center justify-content-center">
+                          <p class=" font-weight-bold">{{cons.heurechargement}} </p>
+
+                        </div>
+                      </td>
+                      <td class="align-middle text-center">
+                        <div class="d-flex align-items-center justify-content-center">
+                          <p class=" font-weight-bold">{{cons.nombrelitre}} L</p>
+
+                        </div>
+                      </td>
+                    <!--   <td class="align-middle text-center">
+                        <div class="d-flex align-items-center justify-content-center">
+                          <p class="me-2  font-weight-bold">{{cons.nombrelitre}} </p>
+
+                        </div>
+                      </td> -->
+
+
+                    </tr>
+
+                  </tbody>
+                </table>
+                <div class="d-flex justify-content-center align-items-center mt-2">
+                  <h6 class="mx-2"> Total litre : <span class="text-capitalize  text-primary " >{{totalConsommation}} L</span>  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="depense" >
+            <div class="">
+              <h6>Dépense</h6>
+            </div>
+            <div  class="">
+              <hr >
+              <div class="table-responsive p-0">
+                <table class="table align-items-center justify-content-center mb-0 table-hover ">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder ">Motif</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder  ps-2">Description</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder  ps-2">Montant</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="depenses"  >
+                    <tr *ngFor="let dep of depenses;" >
+
+                      <td >
+                        <p  class=" font-weight-bold mb-0">{{dep.motif}} </p>
+                      </td>
+                      <td>
+                        <p  class=" font-weight-bold mb-0">{{dep.observationdep}}</p>
+                      </td>
+                      <td>
+                        <p class=" font-weight-bold mb-0">{{dep.montant}}$</p>
+                      </td>
+
+
+
+                    </tr>
+
+                  </tbody>
+                </table>
+                <div class="d-flex justify-content-center align-items-center mt-2">
+                  <h6 class="mx-2"> Dépense du jour : <span class="text-capitalize  text-primary " >{{totalDepense}} $</span>  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
